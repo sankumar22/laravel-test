@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CoffeeOrderController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('calculate-price', [CoffeeOrderController::class, 'calculatePrice']);
+Route::get('selling-prices', [CoffeeOrderController::class, 'getProductSellingPrice']);
+Route::post('add-products', [ProductController::class, 'addProducts']);
+Route::get('products', [ProductController::class, 'index']);
