@@ -15,17 +15,13 @@ class ProductController extends Controller
 
     public function addProducts(Request $request)
     {
-      
-
-
-
         try{
-            $product =  Product::create($request->all());
+            Product::create($request->all());
             $message="Created Successfully";
             $code=201;
 
         }catch(Exception $e){
-            $message="Created Successfully";
+            $message=$e->getMessage();
             $code=400;
         }
         finally{
